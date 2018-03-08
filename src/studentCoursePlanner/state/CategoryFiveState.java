@@ -15,6 +15,7 @@ public class CategoryFiveState implements CoursePlannerStateI{
     private CoursePlannerStateI state;
     
     
+    
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
@@ -26,6 +27,17 @@ public class CategoryFiveState implements CoursePlannerStateI{
     
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
+        
+        
+        state = new CourseAllocatedState();
+        
+        cIn.setElectiveCount(cIn.getElectiveCount()+1);
+        
+        if(cIn.getElectiveCount()>=2){
+            cIn.setCategoryFiveSatisfied(true);
+        }
+        state.doAction(cIn);
+        
         return this;
     }
     

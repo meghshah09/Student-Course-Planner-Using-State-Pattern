@@ -18,6 +18,7 @@ public class CourseWaitlistState implements CoursePlannerStateI {
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
         state = new NotGraduationState();
+        /* Work From Here Currently working fine with ArrayList but need to implement queue.*/
         int i = cIn.getWaitListQueue().size();
         int j=0;
       while (j<i) {

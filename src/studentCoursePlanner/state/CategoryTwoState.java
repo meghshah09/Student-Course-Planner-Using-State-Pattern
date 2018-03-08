@@ -15,16 +15,7 @@ import studentCoursePlanner.util.COURSE;
 public class CategoryTwoState implements CoursePlannerStateI{
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
-    private int DSACount=0;
-
     
-    public int getDSACount() {
-        return DSACount;
-    }
-
-    public void setDSACount(int DSACountIn) {
-        this.DSACount = DSACountIn;
-    }
     
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
@@ -44,11 +35,13 @@ public class CategoryTwoState implements CoursePlannerStateI{
                                 cIn.getAllotedCoursesList().contains(COURSE.COURSE_G.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setDSACount(DSACount+1);
+                            //state.doAction(cIn);
+                            cIn.setDSACount(cIn.getDSACount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                             //WaitList State
+                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
                             
                         }
                     }
@@ -56,32 +49,44 @@ public class CategoryTwoState implements CoursePlannerStateI{
                         if(cIn.getAllotedCoursesList().contains(COURSE.COURSE_E.toString()) || cIn.getAllotedCoursesList().contains(COURSE.COURSE_F.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setDSACount(DSACount+1);
+                            //state.doAction(cIn);
+                            cIn.setDSACount(cIn.getDSACount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                            //Waitlist state
+                           new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else if(getCourseCurrentlyProcessing().equals(COURSE.COURSE_F.toString())){
                         if(cIn.getAllotedCoursesList().contains(COURSE.COURSE_E.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setDSACount(DSACount+1);
+                            //state.doAction(cIn);
+                            cIn.setDSACount(cIn.getDSACount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                             //Waitlist State
+                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else{
                         // Alloted state
                         state = new CourseAllocatedState();
-                        state.doAction(cIn);
-                        this.setDSACount(DSACount+1);
+                        //state.doAction(cIn);
+                        cIn.setDSACount(cIn.getDSACount()+1);
+                        stateAction(state,cIn);
                     }
+        
+             
         
         return this;
     }
-    
+    private void stateAction(CoursePlannerStateI stateIn, Context cIn){
+        if(cIn.getDSACount()>=2){
+                 cIn.setCategoryTwoSatisfied(true);
+        }
+        stateIn.doAction(cIn);
+    }
 }

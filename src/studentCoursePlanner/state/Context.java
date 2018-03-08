@@ -24,7 +24,58 @@ public class Context {
     private List<String> AllotedCoursesList = new ArrayList<>();
     private List<String> WaitListQueue = new ArrayList<>();
     private String course;
+    private boolean CategoryOneSatisfied;
+    private boolean CategoryTwoSatisfied;
+    private boolean CategoryThreeSatisfied;
+    private boolean CategoryFourSatisfied;
+    private boolean CategoryFiveSatisfied;
+    private boolean Graduated;
+    private int longCount=0;
+    private int DSACount=0;
+    private int hardCount=0;
+    private int dataCount=0;
+    private int electiveCount;
 
+    public int getElectiveCount() {
+        return electiveCount;
+    }
+
+    public void setElectiveCount(int electiveCountIn) {
+        this.electiveCount = electiveCountIn;
+    }
+    
+    public int getDataCount() {
+        return dataCount;
+    }
+
+    public void setDataCount(int dataCountIn) {
+        this.dataCount = dataCountIn;
+    }
+    
+    public int getHardCount() {
+        return hardCount;
+    }
+
+    public void setHardCount(int hardCountIn) {
+        this.hardCount = hardCountIn;
+    }
+    
+    public int getDSACount() {
+        return DSACount;
+    }
+
+    public void setDSACount(int DSACountIn) {
+        this.DSACount = DSACountIn;
+    }
+
+    public int getLongCount() {
+        return longCount;
+    }
+
+    public void setLongCount(int longCountIn) {
+        this.longCount = longCountIn;
+    }
+    
     public String getCourse() {
         return course;
     }
@@ -44,11 +95,66 @@ public class Context {
     public Context(FileProcessor fpIn, CoursePlannerStateI cpIn){
         state=cpIn;
         fp=fpIn;
+        CategoryOneSatisfied=false;
+        CategoryTwoSatisfied=false;
+        CategoryThreeSatisfied=false;
+        CategoryFourSatisfied=false;
+        CategoryFiveSatisfied=false;
+        Graduated = false;
     }
+    
     public int getBuID() {
         return buID;
     }
 
+    public boolean isCategoryOneSatisfied() {
+        return CategoryOneSatisfied;
+    }
+
+    public void setCategoryOneSatisfied(boolean CategoryOneSatisfiedIn) {
+        this.CategoryOneSatisfied = CategoryOneSatisfiedIn;
+    }
+
+    public boolean isCategoryTwoSatisfied() {
+        return CategoryTwoSatisfied;
+    }
+
+    public void setCategoryTwoSatisfied(boolean CategoryTwoSatisfiedIn) {
+        this.CategoryTwoSatisfied = CategoryTwoSatisfiedIn;
+    }
+
+    public boolean isCategoryThreeSatisfied() {
+        return CategoryThreeSatisfied;
+    }
+
+    public void setCategoryThreeSatisfied(boolean CategoryThreeSatisfiedIn) {
+        this.CategoryThreeSatisfied = CategoryThreeSatisfiedIn;
+    }
+
+    public boolean isCategoryFourSatisfied() {
+        return CategoryFourSatisfied;
+    }
+
+    public void setCategoryFourSatisfied(boolean CategoryFourSatisfiedIn) {
+        this.CategoryFourSatisfied = CategoryFourSatisfiedIn;
+    }
+
+    public boolean isCategoryFiveSatisfied() {
+        return CategoryFiveSatisfied;
+    }
+
+    public void setCategoryFiveSatisfied(boolean CategoryFiveSatisfiedIn) {
+        this.CategoryFiveSatisfied = CategoryFiveSatisfiedIn;
+    }
+
+    public boolean isGraduated() {
+        return Graduated;
+    }
+
+    public void setGraduated(boolean Graduated) {
+        this.Graduated = Graduated;
+    }
+    
     public int getCount() {
         return count;
     }
@@ -76,14 +182,19 @@ public class Context {
                 if(str != null){
                     splitLine(str);
                 
-                while(getCount()<courses.size()){
+                while(getCount()<courses.size()&& (!isGraduated())){
                     setCourse(getCourses().get(getCount()));
                     state = getState();
                     state = state.doAction(this);
                     state = state.doAction(this);
                     setCount(getCount()+1);
                 }
-                
+                if(isGraduated()){
+                    System.out.println("Graduated");
+                }
+                else{
+                    System.out.println("Not Graduated");
+                }
                 }
                 else{
                     System.out.println("Input File is Empty.");

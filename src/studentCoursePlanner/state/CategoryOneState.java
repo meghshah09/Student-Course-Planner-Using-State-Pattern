@@ -18,16 +18,7 @@ public class CategoryOneState implements CoursePlannerStateI{
 
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
-    private int longCount;
-   
-
-    public int getLongCount() {
-        return longCount;
-    }
-
-    public void setLongCount(int longCountIn) {
-        this.longCount = longCountIn;
-    }
+    
     
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
@@ -48,8 +39,9 @@ public class CategoryOneState implements CoursePlannerStateI{
                                 cIn.getAllotedCoursesList().contains(COURSE.COURSE_C.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setLongCount(longCount+1);
+                            //state.doAction(cIn);
+                            cIn.setLongCount(cIn.getLongCount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                             //WaitList State
@@ -60,8 +52,9 @@ public class CategoryOneState implements CoursePlannerStateI{
                         if(cIn.getAllotedCoursesList().contains(COURSE.COURSE_A.toString()) || cIn.getAllotedCoursesList().contains(COURSE.COURSE_B.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setLongCount(longCount+1);
+                            //state.doAction(cIn);
+                            cIn.setLongCount(cIn.getLongCount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                            //Waitlist state
@@ -72,8 +65,9 @@ public class CategoryOneState implements CoursePlannerStateI{
                         if(cIn.getAllotedCoursesList().contains(COURSE.COURSE_A.toString())){
                             //Alloted State
                             state = new CourseAllocatedState();
-                            state.doAction(cIn);
-                            this.setLongCount(longCount+1);
+                            //state.doAction(cIn);
+                            cIn.setLongCount(cIn.getLongCount()+1);
+                            stateAction(state,cIn);
                         }
                         else{
                             //Waitlist State
@@ -83,10 +77,20 @@ public class CategoryOneState implements CoursePlannerStateI{
                     else{
                         // Alloted state
                         state = new CourseAllocatedState();
-                        state.doAction(cIn);
-                        this.setLongCount(longCount+1);
+                        //state.doAction(cIn);
+                        cIn.setLongCount(cIn.getLongCount()+1);
+                        stateAction(state,cIn);
                     }
+                    
+                    
     
     return this;
 }
+    
+    private void stateAction(CoursePlannerStateI stateIn, Context cIn){
+        if(cIn.getLongCount()>=2){
+            cIn.setCategoryOneSatisfied(true);
+        }
+        stateIn.doAction(cIn);
+    }
 }
