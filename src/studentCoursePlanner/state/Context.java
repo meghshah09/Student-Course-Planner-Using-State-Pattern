@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import studentCoursePlanner.util.FileProcessor;
+import studentCoursePlanner.util.Results;
 
 /**
  *
@@ -18,6 +19,7 @@ import studentCoursePlanner.util.FileProcessor;
 public class Context {
     private FileProcessor fp;
     private CoursePlannerStateI state;
+    private Results result;
     private int buID;
     private List<String> courses = new ArrayList<>();
     private int count=0;
@@ -101,9 +103,10 @@ public class Context {
         return AllotedCoursesList;
     }
     
-    public Context(FileProcessor fpIn, CoursePlannerStateI cpIn){
+    public Context(FileProcessor fpIn, CoursePlannerStateI cpIn,Results rIn){
         state=cpIn;
         fp=fpIn;
+        result = rIn;
         CategoryOneSatisfied=false;
         CategoryTwoSatisfied=false;
         CategoryThreeSatisfied=false;
@@ -201,10 +204,14 @@ public class Context {
                     }
                 }
                 if(isGraduated()){
-                    System.out.println(this.getBuID()+": Graduated And No. Of Semester Taken : "+this.getNoOfSemester());
+                    String resultString = "BU ID "+this.getBuID()+" is Graduated And No. of Semester Taken is "+this.getNoOfSemester();
+                    result.fileDisplay(resultString);
+                    result.stdoutDisplay(resultString);
                 }
                 else{
-                    System.out.println("Not Graduated");
+                    String resultString = "BU ID "+this.getBuID()+" is Not Graduated";
+                    result.fileDisplay(resultString);
+                    result.stdoutDisplay(resultString);
                 }
                 }
                 else{

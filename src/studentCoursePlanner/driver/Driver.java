@@ -10,6 +10,7 @@ import studentCoursePlanner.util.FileProcessor;
 import studentCoursePlanner.state.Context;
 import studentCoursePlanner.state.CoursePlannerStateI;
 import studentCoursePlanner.state.NotGraduationState;
+import studentCoursePlanner.util.Results;
 
 /**
  *
@@ -30,8 +31,11 @@ public class Driver {
                 fp.setFileName(args[0]);
                 fp.setCount(0);
                 CoursePlannerStateI s = new NotGraduationState();
-                Context c = new Context(fp,s);
+                Results r = new Results();
+                Context c = new Context(fp,s,r);
+                r.openingOutputFile(args[1]);
                 c.ProcessingLine();
+                r.closeingOutputFile();
                 //System.out.println(c.toString());
                 //fp.setFileName(args[1]);
                 //fp.setCount(0);
