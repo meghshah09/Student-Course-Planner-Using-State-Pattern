@@ -32,8 +32,8 @@ public class NotGraduationState implements CoursePlannerStateI{
     public CoursePlannerStateI doAction(Context cIn) {
         
         setCourseCurrentlyProcessing(cIn.getCourse());
-        if(!(coursesProcessing.contains(getCourseCurrentlyProcessing()))){ // Same course Will not be allowed.
-            coursesProcessing.add(getCourseCurrentlyProcessing());
+        if(!(cIn.getAllotedCoursesList().contains(getCourseCurrentlyProcessing()))){ // Same course Will not be allowed.
+            //coursesProcessing.add(getCourseCurrentlyProcessing());
             
             if(courseCurrentlyProcessing.equals("A") || courseCurrentlyProcessing.equals(COURSE.COURSE_B.toString())|| courseCurrentlyProcessing.equals(COURSE.COURSE_C.toString()) ||
                 courseCurrentlyProcessing.equals(COURSE.COURSE_D.toString())){

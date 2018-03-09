@@ -30,7 +30,9 @@ public class CourseAllocatedState implements CoursePlannerStateI{
      
         setCourseCurrentlyProcessing(cIn.getCourse());
         cIn.getAllotedCoursesList().add(getCourseCurrentlyProcessing());
-        
+        if((cIn.getAllotedCoursesList().size() % 3 )==0){
+            cIn.setNoOfSemester(cIn.getNoOfSemester()+1);
+        }
         if(cIn.getAllotedCoursesList().size()>=10){
         if(cIn.isCategoryOneSatisfied() && cIn.isCategoryTwoSatisfied() && cIn.isCategoryThreeSatisfied() && cIn.isCategoryFourSatisfied() && cIn.isCategoryFiveSatisfied()){
             state= new GraduationState();

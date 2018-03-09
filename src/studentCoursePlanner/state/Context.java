@@ -35,6 +35,15 @@ public class Context {
     private int hardCount=0;
     private int dataCount=0;
     private int electiveCount;
+    private int NoOfSemester;
+
+    public int getNoOfSemester() {
+        return NoOfSemester;
+    }
+
+    public void setNoOfSemester(int NoOfSemester) {
+        this.NoOfSemester = NoOfSemester;
+    }
 
     public int getElectiveCount() {
         return electiveCount;
@@ -186,11 +195,13 @@ public class Context {
                     setCourse(getCourses().get(getCount()));
                     state = getState();
                     state = state.doAction(this);
-                    state = state.doAction(this);
-                    setCount(getCount()+1);
+                    if(!isGraduated()){
+                        state = state.doAction(this);
+                        setCount(getCount()+1);
+                    }
                 }
                 if(isGraduated()){
-                    System.out.println("Graduated");
+                    System.out.println(this.getBuID()+": Graduated And No. Of Semester Taken : "+this.getNoOfSemester());
                 }
                 else{
                     System.out.println("Not Graduated");

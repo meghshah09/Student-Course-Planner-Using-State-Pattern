@@ -15,7 +15,9 @@ public class GraduationState implements CoursePlannerStateI{
     public CoursePlannerStateI doAction(Context cIn) {
         
         cIn.setGraduated(true);
-        
+        if((cIn.getAllotedCoursesList().size()%3)!=0){
+            cIn.setNoOfSemester(cIn.getNoOfSemester()+1);
+        }
         return this;
     }
     
