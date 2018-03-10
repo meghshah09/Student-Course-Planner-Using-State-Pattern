@@ -190,10 +190,15 @@ public class Context {
     }
     public void ProcessingLine(){
         
-                String str = fp.readLine();
-                if(str != null){
+            String str = fp.readLine();
+            if(str != null){
+                try{
                     splitLine(str);
-                
+                }catch(NumberFormatException e){
+                    System.err.println("Input File is not well Formated. Please re-run the program with proper Format.");
+                    fp.close();
+                    System.exit(0);
+                }
                 while(getCount()<courses.size()&& (!isGraduated())){
                     setCourse(getCourses().get(getCount()));
                     state = getState();
@@ -203,6 +208,7 @@ public class Context {
                         setCount(getCount()+1);
                     }
                 }
+                
                 if(isGraduated()){
                     String resultString = "BU ID "+this.getBuID()+" is Graduated And No. of Semester Taken is "+this.getNoOfSemester();
                     result.fileDisplay(resultString);
@@ -213,7 +219,7 @@ public class Context {
                     result.fileDisplay(resultString);
                     result.stdoutDisplay(resultString);
                 }
-                }
+            }
                 else{
                     System.out.println("Input File is Empty.");
                     System.out.println("Please Kindly enter the Data in the input and run it.");

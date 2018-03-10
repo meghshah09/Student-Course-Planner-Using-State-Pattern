@@ -32,26 +32,26 @@ public class NotGraduationState implements CoursePlannerStateI{
     public CoursePlannerStateI doAction(Context cIn) {
         
         setCourseCurrentlyProcessing(cIn.getCourse());
-        if(!(cIn.getAllotedCoursesList().contains(getCourseCurrentlyProcessing()))){ // Same course Will not be allowed.
+        if(!(cIn.getAllotedCoursesList().contains(getCourseCurrentlyProcessing()))){ // Same course Will not be allowed to process.
             //coursesProcessing.add(getCourseCurrentlyProcessing());
             
-            if(courseCurrentlyProcessing.equals("A") || courseCurrentlyProcessing.equals(COURSE.COURSE_B.toString())|| courseCurrentlyProcessing.equals(COURSE.COURSE_C.toString()) ||
-                courseCurrentlyProcessing.equals(COURSE.COURSE_D.toString())){
+            if(courseCurrentlyProcessing.equals(COURSE.COURSE_A.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_B.toString())|| 
+                    courseCurrentlyProcessing.equals(COURSE.COURSE_C.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_D.toString())){
                 state = new CategoryOneState();
                 state.doAction(cIn);
             }
-            else if(courseCurrentlyProcessing.equals("E") || courseCurrentlyProcessing.equals("F")|| courseCurrentlyProcessing.equals("G") ||
-                courseCurrentlyProcessing.equals("H")){
+            else if(courseCurrentlyProcessing.equals(COURSE.COURSE_E.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_F.toString())|| 
+                    courseCurrentlyProcessing.equals(COURSE.COURSE_G.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_H.toString())){
                 state = new CategoryTwoState();
                 state.doAction(cIn);
             }
-            else if(courseCurrentlyProcessing.equals("I") || courseCurrentlyProcessing.equals("J")|| courseCurrentlyProcessing.equals("K") ||
-                courseCurrentlyProcessing.equals("L")){
+            else if(courseCurrentlyProcessing.equals(COURSE.COURSE_I.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_J.toString())|| 
+                    courseCurrentlyProcessing.equals(COURSE.COURSE_K.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_L.toString())){
                 state = new CategoryThreeState();
                 state.doAction(cIn);
             }
-            else if(courseCurrentlyProcessing.equals("M") || courseCurrentlyProcessing.equals("N")|| courseCurrentlyProcessing.equals("O") ||
-                courseCurrentlyProcessing.equals("P")){
+            else if(courseCurrentlyProcessing.equals(COURSE.COURSE_M.toString()) || courseCurrentlyProcessing.equals(COURSE.COURSE_N.toString())|| 
+                    courseCurrentlyProcessing.equals(COURSE.COURSE_O.toString()) ||courseCurrentlyProcessing.equals(COURSE.COURSE_P.toString())){
                 state = new CategoryFourState();
                 state.doAction(cIn);
             }

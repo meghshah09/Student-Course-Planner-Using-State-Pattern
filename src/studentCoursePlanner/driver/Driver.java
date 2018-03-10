@@ -35,11 +35,8 @@ public class Driver {
                 Context c = new Context(fp,s,r);
                 r.openingOutputFile(args[1]);
                 c.ProcessingLine();
-                r.closeingOutputFile();
-                //System.out.println(c.toString());
-                //fp.setFileName(args[1]);
-                //fp.setCount(0);
-                
+                r.closeingOutputFile();   
+                System.out.println("");
                 System.out.println("Done Planning Student Courses.....");
         }
         else{
