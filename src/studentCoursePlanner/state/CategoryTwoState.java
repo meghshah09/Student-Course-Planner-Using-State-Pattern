@@ -5,7 +5,7 @@
  */
 package studentCoursePlanner.state;
 
-import studentCoursePlanner.util.AllotedCoursesList;
+
 import studentCoursePlanner.util.COURSE;
 
 /**
@@ -88,5 +88,20 @@ public class CategoryTwoState implements CoursePlannerStateI{
                  cIn.setCategoryTwoSatisfied(true);
         }
         stateIn.doAction(cIn);
+    }
+
+    @Override
+    public void doAddition(String strIn, Context cIn) {
+       
+    }
+
+    @Override
+    public void graduated(Context cIn) {
+       
+    }
+
+    @Override
+    public void notGraduated(Context cIn) {
+       
     }
 }

@@ -12,5 +12,7 @@ package studentCoursePlanner.state;
 public interface CoursePlannerStateI {
     
     public CoursePlannerStateI doAction(Context cIn);
-    
+    public void doAddition(String strIn, Context cIn);
+    public void graduated(Context cIn);
+    public void notGraduated(Context cIn);
 }

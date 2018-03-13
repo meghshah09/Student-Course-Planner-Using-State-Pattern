@@ -20,5 +20,23 @@ public class GraduationState implements CoursePlannerStateI{
         }
         return this;
     }
+
+    @Override
+    public void doAddition(String strIn, Context cIn) {
+        
+    }
+
+    @Override
+    public void graduated(Context cIn) {
+       String resultString = "BU ID "+cIn.getBuID()+" is Graduated And No. of Semester Taken is "+cIn.getNoOfSemester();
+       cIn.getResult().fileDisplay(resultString);
+       cIn.getResult().stdoutDisplay(resultString);
+    }
+
+    @Override
+    public void notGraduated(Context cIn) {
+        
+        
+    }
     
 }

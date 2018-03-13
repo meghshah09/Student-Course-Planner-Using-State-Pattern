@@ -35,6 +35,16 @@ public class CourseWaitlistState implements CoursePlannerStateI {
         if(!(cIn.getWaitListQueue().contains(strIn)))
             cIn.getWaitListQueue().add(strIn);
     }
+
+    @Override
+    public void graduated(Context cIn) {
+        
+    }
+
+    @Override
+    public void notGraduated(Context cIn) {
+        
+    }
     
     
     

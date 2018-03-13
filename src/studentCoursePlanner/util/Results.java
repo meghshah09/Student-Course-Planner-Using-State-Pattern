@@ -52,7 +52,11 @@ public class Results implements FileDisplayInterface,StdoutDisplayInterface {
             System.out.println("Problem while Closing the file : " +e.getMessage());
         }
     }
-
+    
+    /**
+     * File Write Function
+     * @param strIn String to be written to file.
+     */
     @Override
     public void fileDisplay(String strIn) {
         try{
@@ -64,7 +68,10 @@ public class Results implements FileDisplayInterface,StdoutDisplayInterface {
         }
         
     }
-
+    /**
+     * Stdout Display Function
+     * @param strIn String to be displayed to stdout.
+     */
     @Override
     public void stdoutDisplay(String strIn) {
         System.out.println(strIn);

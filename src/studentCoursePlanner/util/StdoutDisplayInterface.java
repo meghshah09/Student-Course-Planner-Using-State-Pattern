@@ -12,7 +12,7 @@ package studentCoursePlanner.util;
 public interface StdoutDisplayInterface {
     /**
      * abstract method stdoutDisplay
-     * @param n denotes the node which data is to be written on stdout 
+     * @param strIn denotes the String which is to be written on stdout 
      */
     public void stdoutDisplay(String strIn);
     

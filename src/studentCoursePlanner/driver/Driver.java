@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package studentCourseplanner.driver;
+package studentCoursePlanner.driver;
 
 import java.util.Scanner;
 import studentCoursePlanner.util.FileProcessor;
@@ -18,7 +18,7 @@ import studentCoursePlanner.util.Results;
  */
 public class Driver {
     public static void main(String[] args){
-        if(args.length==2 && args[0].endsWith("input.txt") && args[1].endsWith("output.txt")){
+        if(args.length==2 || args[0].endsWith("input.txt") || args[1].endsWith("output.txt")){
             System.out.println("================================================");
             System.out.println("            Student Courses Planner             ");
             System.out.println("================================================");

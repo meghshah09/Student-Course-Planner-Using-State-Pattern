@@ -40,5 +40,20 @@ public class CategoryFiveState implements CoursePlannerStateI{
         
         return this;
     }
+
+    @Override
+    public void doAddition(String strIn, Context cIn) {
+        
+    }
+
+    @Override
+    public void graduated(Context cIn) {
+        
+    }
+
+    @Override
+    public void notGraduated(Context cIn) {
+        
+    }
     
 }

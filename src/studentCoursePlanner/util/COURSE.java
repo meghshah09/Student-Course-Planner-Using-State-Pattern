@@ -12,6 +12,7 @@ package studentCoursePlanner.util;
 public enum COURSE {
     
     CATEGORY_ONE,CATEGORY_TWO,CATEGORY_THREE,CATEGORY_FOUR,CATEGORY_FIVE,
+
         COURSE_A{
             @Override
             public String toString(){

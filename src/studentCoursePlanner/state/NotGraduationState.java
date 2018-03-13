@@ -59,8 +59,32 @@ public class NotGraduationState implements CoursePlannerStateI{
                 state = new CategoryFiveState();
                 state.doAction(cIn);
             }
-        }   
-        return new CourseWaitlistState();
+        }
+        
+        if(!cIn.isGraduated()){
+            return new CourseWaitlistState();
+        }
+        else
+        {
+            return new GraduationState();
+        }
+    }
+
+    @Override
+    public void doAddition(String strIn, Context cIn) {
+        
+    }
+
+    @Override
+    public void graduated(Context cIn) {
+       
+    }
+
+    @Override
+    public void notGraduated(Context cIn) {
+        String resultString = "BU ID "+cIn.getBuID()+" is Not Graduated and Allocated List of Courses are "+cIn.getCourses();
+                    cIn.getResult().fileDisplay(resultString);
+                    cIn.getResult().stdoutDisplay(resultString);
     }
     
 }

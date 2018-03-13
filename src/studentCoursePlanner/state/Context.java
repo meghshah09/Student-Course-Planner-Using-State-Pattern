@@ -114,6 +114,14 @@ public class Context {
         CategoryFiveSatisfied=false;
         Graduated = false;
     }
+
+    public Results getResult() {
+        return result;
+    }
+
+    public void setResult(Results resultIn) {
+        this.result = resultIn;
+    }
     
     public int getBuID() {
         return buID;
@@ -205,20 +213,23 @@ public class Context {
                     state = state.doAction(this);
                     if(!isGraduated()){
                         state = state.doAction(this);
-                        setCount(getCount()+1);
                     }
+                    else{
+                       //Graduation
+                        break;
+                    }
+                    setCount(getCount()+1);
                 }
-                
-                if(isGraduated()){
-                    String resultString = "BU ID "+this.getBuID()+" is Graduated And No. of Semester Taken is "+this.getNoOfSemester();
-                    result.fileDisplay(resultString);
-                    result.stdoutDisplay(resultString);
+                if(!isGraduated()){
+                    //Not GraduatedState
+                    state = getState();
+                    state.notGraduated(this);
                 }
                 else{
-                    String resultString = "BU ID "+this.getBuID()+" is Not Graduated";
-                    result.fileDisplay(resultString);
-                    result.stdoutDisplay(resultString);
+                    state = new GraduationState();
+                    state.graduated(this);
                 }
+                
             }
                 else{
                     System.out.println("Input File is Empty.");
@@ -232,7 +243,6 @@ public class Context {
     private void splitLine(String strIn) {
        strIn= strIn.trim(); // precaution if file contains any white spaces.
         String[] output = strIn.split(":");
-        
         this.setBuID(Integer.parseInt(output[0]));
         String[] c = output[1].split(" ");
         
