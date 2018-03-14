@@ -18,9 +18,9 @@ import studentCoursePlanner.util.Results;
  */
 public class Driver {
     public static void main(String[] args){
-        if(args.length==2 || args[0].endsWith("input.txt") || args[1].endsWith("output.txt")){
+        if(args.length==2){
             System.out.println("================================================");
-            System.out.println("            Student Courses Planner             ");
+            System.out.println("            Student Course Planner             ");
             System.out.println("================================================");
             System.out.println("");
             System.out.println("Starting the Process......");

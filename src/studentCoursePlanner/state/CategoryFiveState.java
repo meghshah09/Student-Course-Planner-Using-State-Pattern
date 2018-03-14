@@ -15,16 +15,27 @@ public class CategoryFiveState implements CoursePlannerStateI{
     private CoursePlannerStateI state;
     
     
-    
+    /**
+     * 
+     * @return the currently processing course 
+     */
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
 
+    /**
+     * 
+     * @param courseCurrentlyProcessingIn sets the currently processing course
+     */
     public void setCourseCurrentlyProcessing(String courseCurrentlyProcessingIn) {
         this.courseCurrentlyProcessing = courseCurrentlyProcessingIn;
     }
     
-    
+    /**
+     * doAction method for Category five state.
+     * @param cIn context class reference
+     * @return the current state.
+     */
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
         
@@ -41,16 +52,25 @@ public class CategoryFiveState implements CoursePlannerStateI{
         return this;
     }
 
+    /*
+    Action won't be invoked for this state
+    */
     @Override
-    public void doAddition(String strIn, Context cIn) {
+    public void addCourseInWaitList(String strIn, Context cIn) {
         
     }
 
+    /*
+    Action won't be invoked for this state
+    */
     @Override
     public void graduated(Context cIn) {
         
     }
 
+    /*
+    Action won't be invoked for this state.
+    */
     @Override
     public void notGraduated(Context cIn) {
         

@@ -31,7 +31,7 @@ public class CourseWaitlistState implements CoursePlannerStateI {
         return new NotGraduationState();
     }
     
-    public void doAddition(String strIn, Context cIn){
+    public void addCourseInWaitList(String strIn, Context cIn){
         if(!(cIn.getWaitListQueue().contains(strIn)))
             cIn.getWaitListQueue().add(strIn);
     }

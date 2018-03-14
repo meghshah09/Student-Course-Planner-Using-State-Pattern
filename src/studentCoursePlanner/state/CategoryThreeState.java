@@ -16,16 +16,27 @@ public class CategoryThreeState implements CoursePlannerStateI{
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
     
-    
+    /**
+     * 
+     * @return the currently processing course 
+     */
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
 
+    /**
+     * 
+     * @param courseCurrentlyProcessingIn sets the currently processing course
+     */
     public void setCourseCurrentlyProcessing(String courseCurrentlyProcessingIn) {
         this.courseCurrentlyProcessing = courseCurrentlyProcessingIn;
     }
     
-    
+    /**
+     * doAction method for Category three state.
+     * @param cIn context class reference
+     * @return the current state.
+     */
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
         
@@ -41,7 +52,7 @@ public class CategoryThreeState implements CoursePlannerStateI{
                         }
                         else{
                             //WaitList State
-                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                            new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else if(getCourseCurrentlyProcessing().equals(COURSE.COURSE_K.toString())){
@@ -54,7 +65,7 @@ public class CategoryThreeState implements CoursePlannerStateI{
                         }
                         else{
                            //Waitlist state
-                           new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                           new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else if(getCourseCurrentlyProcessing().equals(COURSE.COURSE_J.toString())){
@@ -67,7 +78,7 @@ public class CategoryThreeState implements CoursePlannerStateI{
                         }
                         else{
                             //Waitlist State
-                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                            new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else{
@@ -93,7 +104,7 @@ public class CategoryThreeState implements CoursePlannerStateI{
     }
 
     @Override
-    public void doAddition(String strIn, Context cIn) {
+    public void addCourseInWaitList(String strIn, Context cIn) {
         
     }
 

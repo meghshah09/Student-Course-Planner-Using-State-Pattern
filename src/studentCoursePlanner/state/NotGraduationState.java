@@ -17,17 +17,28 @@ public class NotGraduationState implements CoursePlannerStateI{
 
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
-    private List<String> coursesProcessing = new ArrayList<>();
-    private CourseWaitlistState waitListQueue;
+
+    /**
+     * 
+     * @return the currently processing course for this state
+     */
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
 
+    /**
+     * 
+     * @param courseCurrentlyProcessingIn sets the currently processing course for this state.
+     */
     public void setCourseCurrentlyProcessing(String courseCurrentlyProcessingIn) {
         this.courseCurrentlyProcessing = courseCurrentlyProcessingIn;
     }
     
-    
+    /**
+     * Action Method for Not Graduation State.
+     * @param cIn Context class object
+     * @return 
+     */
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
         
@@ -71,20 +82,28 @@ public class NotGraduationState implements CoursePlannerStateI{
     }
 
     @Override
-    public void doAddition(String strIn, Context cIn) {
+    public void addCourseInWaitList(String strIn, Context cIn) {
         
     }
-
+    
     @Override
     public void graduated(Context cIn) {
        
     }
 
+    /**
+     * Invoked when a student do not Graduate
+     * @param cIn Context class object
+     */
     @Override
     public void notGraduated(Context cIn) {
-        String resultString = "BU ID "+cIn.getBuID()+" is Not Graduated and Allocated List of Courses are "+cIn.getCourses();
-                    cIn.getResult().fileDisplay(resultString);
-                    cIn.getResult().stdoutDisplay(resultString);
+        
+        String resultString = "BU ID "+cIn.getBuID()+" will not Graduate and this is the courses Sequence which was tried "
+                +cIn.getAllotedCoursesList()+" as per the requirement given by the student and Planning Policy";
+        cIn.getResult().fileDisplay(resultString);
+        cIn.getResult().stdoutDisplay(resultString);
+    
     }
+    
     
 }

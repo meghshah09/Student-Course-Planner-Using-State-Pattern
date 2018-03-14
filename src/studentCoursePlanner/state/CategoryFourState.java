@@ -17,15 +17,27 @@ public class CategoryFourState implements CoursePlannerStateI{
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
     
-    
+    /**
+     * 
+     * @return the currently processing course 
+     */
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
 
+    /**
+     * 
+     * @param courseCurrentlyProcessingIn sets the currently processing course
+     */
     public void setCourseCurrentlyProcessing(String courseCurrentlyProcessingIn) {
         this.courseCurrentlyProcessing = courseCurrentlyProcessingIn;
     }
 
+    /**
+     * doAction method for Category four state.
+     * @param cIn context class reference
+     * @return the current state.
+     */
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
         
@@ -41,7 +53,7 @@ public class CategoryFourState implements CoursePlannerStateI{
                         }
                         else{
                             //WaitList State
-                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                            new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else if(getCourseCurrentlyProcessing().equals(COURSE.COURSE_O.toString())){
@@ -54,7 +66,7 @@ public class CategoryFourState implements CoursePlannerStateI{
                         }
                         else{
                            //Waitlist state
-                           new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                           new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else if(getCourseCurrentlyProcessing().equals(COURSE.COURSE_N.toString())){
@@ -67,7 +79,7 @@ public class CategoryFourState implements CoursePlannerStateI{
                         }
                         else{
                             //Waitlist State
-                            new CourseWaitlistState().doAddition(getCourseCurrentlyProcessing(), cIn);
+                            new CourseWaitlistState().addCourseInWaitList(getCourseCurrentlyProcessing(), cIn);
                         }
                     }
                     else{
@@ -83,24 +95,37 @@ public class CategoryFourState implements CoursePlannerStateI{
         
         return this;
     }
-    
+    /*
+    Helper method for doAction
+    */
     private void stateAction(CoursePlannerStateI stateIn, Context cIn){
         if(cIn.getDataCount()>=2){
             cIn.setCategoryFourSatisfied(true);
         }
         stateIn.doAction(cIn);
     }
-
+    
+    /*
+    Action will not be invoked from this state.
+    */
     @Override
-    public void doAddition(String strIn, Context cIn) {
+    public void addCourseInWaitList(String strIn, Context cIn) {
         
     }
 
+    /**
+     * Action will not be invoked from this state.
+     * @param cIn 
+     */
     @Override
     public void graduated(Context cIn) {
         
     }
 
+    /**
+     * Action will not be invoked from this state.
+     * @param cIn 
+     */
     @Override
     public void notGraduated(Context cIn) {
         

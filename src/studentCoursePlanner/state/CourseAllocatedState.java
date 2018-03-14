@@ -15,21 +15,34 @@ public class CourseAllocatedState implements CoursePlannerStateI{
 
     private String courseCurrentlyProcessing;
     private CoursePlannerStateI state;
- 
     
+    /**
+     * 
+     * @return currently Processing Course for this state. 
+     */
     public String getCourseCurrentlyProcessing() {
         return courseCurrentlyProcessing;
     }
 
+    /**
+     * 
+     * @param courseCurrentlyProcessingIn currently to be processed course for this state 
+     */
     public void setCourseCurrentlyProcessing(String courseCurrentlyProcessingIn) {
         this.courseCurrentlyProcessing = courseCurrentlyProcessingIn;
     }
     
+    /**
+     * 
+     * @param cIn
+     * @return 
+     */
     @Override
     public CoursePlannerStateI doAction(Context cIn) {
      
         setCourseCurrentlyProcessing(cIn.getCourse());
         cIn.getAllotedCoursesList().add(getCourseCurrentlyProcessing());
+
         if((cIn.getAllotedCoursesList().size() % 3 )==0){
             cIn.setNoOfSemester(cIn.getNoOfSemester()+1);
         }
@@ -43,7 +56,7 @@ public class CourseAllocatedState implements CoursePlannerStateI{
     }
 
     @Override
-    public void doAddition(String strIn, Context cIn) {
+    public void addCourseInWaitList(String strIn, Context cIn) {
         
     }
 

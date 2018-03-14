@@ -10,9 +10,9 @@ package studentCoursePlanner.state;
  * @author Megh Shah
  */
 public interface CoursePlannerStateI {
-    
+
     public CoursePlannerStateI doAction(Context cIn);
-    public void doAddition(String strIn, Context cIn);
+    public void addCourseInWaitList(String strIn, Context cIn);
     public void graduated(Context cIn);
     public void notGraduated(Context cIn);
 }
