@@ -76,4 +76,9 @@ public class CategoryFiveState implements CoursePlannerStateI{
         
     }
     
+    @Override
+    public String toString(){
+    String string = "Currently processing state is "+ getCourseCurrentlyProcessing();
+    return string;
+    }
 }

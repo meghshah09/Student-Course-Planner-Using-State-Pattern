@@ -117,4 +117,10 @@ public class CategoryThreeState implements CoursePlannerStateI{
     public void notGraduated(Context cIn) {
         
     }
+    
+    @Override
+    public String toString(){
+    String string = "Currently processing state is "+ getCourseCurrentlyProcessing();
+    return string;
+    }
 }

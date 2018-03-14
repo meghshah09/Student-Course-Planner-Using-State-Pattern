@@ -407,4 +407,9 @@ public class Context {
             courses.add(c[i]);
     }
     
+    @Override
+    public String toString(){
+        String string = "BU_ID is"+ getBuID()+" and list of Courses given are "+getCourses();
+        return string;
+    }
 }
